@@ -39,10 +39,10 @@ jobs:
         uses: actions/cache@v4
         with:
           path: vendor
-          key: ${{ runner.os }}-${{ github.head_ref }}-composer-${{ hashFiles('**/composer.lock') }}
+          key: ${{ runner.os }}-${{ github.ref_name }}-composer-${{ hashFiles('**/composer.lock') }}
           restore-keys: |
             ${{ runner.os }}-composer-
-            ${{ runner.os }}-${{ github.head_ref }}-composer-
+            ${{ runner.os }}-${{ github.ref_name }}-composer-
 
 
       - name: Install dependencies
