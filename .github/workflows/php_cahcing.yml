@@ -48,14 +48,6 @@ jobs:
         run: |
           composer install || true
 
-
-      - name: Cache vendor folder
-        uses: actions/cache/save@v4
-        with:
-          path: vendor
-
-
-
 #      - name: Install dependencies
 #        run: |
 #          composer install -q --no-ansi --no-interaction --no-scripts --no-progress
