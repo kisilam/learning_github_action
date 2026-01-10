@@ -35,6 +35,9 @@ jobs:
           php-version: '8.4'
           extensions: mbstring, bcmath, ctype, fileinfo, json, tokenizer, xml, curl
 
+
+# Basic github action cache while you are building project for testing or deploy using copy or rsync command
+
       - name: Cache Composer dependencies
         uses: actions/cache@v4
         with:
