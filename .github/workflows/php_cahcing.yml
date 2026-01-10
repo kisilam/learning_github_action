@@ -29,11 +29,11 @@ jobs:
 #      - name: Run a one-line script
 #        run: echo Hello, world!
 
-#      - name: Cache vendor folder
-#        uses: actions/cache@v3
-#        with:
-#          path: /vendor
-#          key: ${{ github.sha }}
+      - name: Cache vendor folder
+        uses: actions/cache@v4
+        with:
+          path: /vendor
+          key: ${{ github.sha }}
 
       - name: Setup PHP with PECL extension
         uses: shivammathur/setup-php@v2
@@ -41,18 +41,25 @@ jobs:
           php-version: '8.3'
           extensions: mbstring, bcmath, ctype, fileinfo, json, tokenizer, xml, curl
 
-      - name: Cache Composer dependencies
-        uses: actions/cache@v4
-        with:
-          path: vendor
-          key: ${{ runner.os }}-composer-${{ hashFiles('**/composer.lock') }}
-          restore-keys: |
-           ${{ runner.os }}-composer-
+#      - name: Cache Composer dependencies
+#        uses: actions/cache@v4
+#        with:
+#          path: vendor
+#          key: ${{ runner.os }}-composer-${{ hashFiles('**/composer.lock') }}
+#          restore-keys: |
+#          ${{ runner.os }}-composer-
 
 
       - name: Install dependencies
         run: |
           composer install || true
+
+
+      - name: Cache vendor folder
+        uses: actions/cache/save@v4
+        with:
+          path: /vendor
+          key: ${{ github.sha }}
 
 
 #      - name: Install dependencies
