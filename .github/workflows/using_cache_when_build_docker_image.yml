@@ -45,3 +45,15 @@ jobs:
       - name: Inspect
         run: |
           docker image inspect ${{ vars.DOCKER_IMAGE }}:latest
+
+      - name: Load image to the archive
+        run: |
+          docker save ${{ vars.DOCKER_IMAGE }} | gzip -7 > ${{ vars.DOCKER_IMAGE }}.tgz
+
+      - name: Show some info
+        run: |
+          echo "Show docker images ...."
+          docker images
+          echo " "
+          echo "directory listing ...."
+          ls -l
