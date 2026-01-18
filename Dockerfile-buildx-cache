@@ -6,6 +6,6 @@ RUN curl -sLS https://getcomposer.org/installer | php -- --install-dir=/usr/bin/
 
 COPY . .
 
-RUN --mount=type=cache,target=/var/www/html/vendor composer install
+RUN composer install
 
 CMD [ "echo", "Hello, world" ]
