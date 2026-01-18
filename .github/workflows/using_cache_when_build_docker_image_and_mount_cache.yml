@@ -42,7 +42,7 @@ jobs:
             ${{ runner.os }}-${{ github.ref_name }}-composer-
 
       - name: Inject compose vendor cache
-        uses: reproducible-containers/buildkit-cache-dance@v3
+        uses: reproducible-containers/buildkit-cache-dance@v2
         with:
           cache-source: vendor
           cache-target: /var/www/html/vendor
