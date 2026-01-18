@@ -45,7 +45,7 @@ jobs:
         uses: reproducible-containers/buildkit-cache-dance@v3
         with:
           cache-source: vendor
-
+          cache-target: /var/www/html/vendor
 
       - name: Build and push Docker image with GHA cache
         uses: docker/build-push-action@v6
