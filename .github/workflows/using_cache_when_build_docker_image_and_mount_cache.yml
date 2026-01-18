@@ -1,6 +1,6 @@
 # This is a basic workflow to help you get started with Actions
 
-name: Trying to use github action caching when build docker image 
+name: Trying to use github action caching when build docker image and using mounting cache in build stage 
 
 # Controls when the workflow will run
 on:
@@ -33,7 +33,7 @@ jobs:
         uses: docker/setup-buildx-action@v3
 
 
-      - name: Go Build Cache for Docker
+      - name: Get Cache for Docker from Github
         uses: actions/cache@v4
         with:
           path: vendor
@@ -41,7 +41,7 @@ jobs:
           restore-keys: |
             ${{ runner.os }}-${{ github.ref_name }}-composer-
 
-      - name: Inject compose vendor cache
+      - name: Inject compose vendor cache in to image buildx
         uses: reproducible-containers/buildkit-cache-dance@v2
         with:
           cache-source: vendor

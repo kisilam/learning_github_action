@@ -1,6 +1,7 @@
 {
     "require": {
         "phpmailer/phpmailer": "^7.0",
-        "env/dotenv": "^2.0"
+        "env/dotenv": "^2.0",
+        "monolog/monolog": "^3.10"
     }
 }
