@@ -9,7 +9,7 @@ on:
 
 env:
   REGISTRY: ghcr.io
-  IMAGE_NAME: ${{ github.repository }}-my-php
+  IMAGE_NAME: ${{ github.repository }}/my-php
 
 jobs:
   build-scan-push:
@@ -46,6 +46,7 @@ jobs:
         with:
           context: .
           load: true 
+          file: ./Dockerfile-buildx-cache
           tags: ${{ env.REGISTRY }}/${{ env.IMAGE_NAME }}:test
 #          labels: ${{ id.meta.outputs.images }}
 
@@ -66,5 +67,6 @@ jobs:
         with:
           context: .
           push: true
+          file: ./Dockerfile-buildx-cache
           tags: ${{ steps.meta.outputs.tags }}
 #          labels: ${{ id.meta.outputs.labels }}
