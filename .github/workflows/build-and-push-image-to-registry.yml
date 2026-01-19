@@ -9,7 +9,7 @@ on:
 
 env:
   REGISTRY: ghcr.io
-  IMAGE_NAME: seagent-php-8.4-alpine
+  IMAGE_NAME: ${{ github.repository }}-my-php
 
 jobs:
   build-scan-push:
