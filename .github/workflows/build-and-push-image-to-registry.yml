@@ -40,7 +40,7 @@ jobs:
             type=sha,format=short
             latest
 
-      # 1. Build image and save local on the runner 
+      # 1. Build the image and save local on the runner 
       - name: Build Docker image
         uses: docker/build-push-action@v5
         with:
@@ -66,5 +66,5 @@ jobs:
         with:
           context: .
           push: true
-          tags: ${{ id.meta.outputs.tags }}
+          tags: ${{ steps.meta.outputs.tags }}
 #          labels: ${{ id.meta.outputs.labels }}
